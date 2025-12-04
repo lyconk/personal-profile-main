@@ -1,52 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initSideNavigation();
+  initSmoothScroll();
   initScrollAnimations();
-  initTechStackAnimation();
+  initNavHighlight();
 });
 
-// 侧边导航激活状态
-function initSideNavigation() {
-  const navDots = document.querySelectorAll('.nav-dot');
-  const sections = document.querySelectorAll('section[id]');
-  
-  // 点击导航
-  navDots.forEach(dot => {
-    dot.addEventListener('click', (e) => {
+// 平滑滚动
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetId = dot.getAttribute('href');
-      const target = document.querySelector(targetId);
+      const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     });
   });
-  
-  // 滚动时更新激活状态
-  const updateActiveNav = () => {
-    const scrollPos = window.scrollY + window.innerHeight / 2;
-    
-    sections.forEach((section, index) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        navDots.forEach(dot => dot.classList.remove('active'));
-        const activeHref = `#${section.id}`;
-        const activeDot = document.querySelector(`.nav-dot[href="${activeHref}"]`);
-        if (activeDot) activeDot.classList.add('active');
-      }
-    });
-    
-    // Hero section 特殊处理
-    if (window.scrollY < sections[0]?.offsetTop) {
-      navDots.forEach(dot => dot.classList.remove('active'));
-      const heroDot = document.querySelector('.nav-dot[href="#hero"]');
-      if (heroDot) heroDot.classList.add('active');
-    }
-  };
-  
-  window.addEventListener('scroll', updateActiveNav);
-  updateActiveNav();
 }
 
 // 滚动动画
@@ -60,75 +31,52 @@ function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-        
-        // 时间线项目的延迟动画
-        if (entry.target.classList.contains('timeline-item')) {
-          const items = document.querySelectorAll('.timeline-item');
-          items.forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.2}s`;
-          });
-        }
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
       }
     });
   }, observerOptions);
   
-  // 观察元素
-  const elementsToAnimate = document.querySelectorAll(
-    '.about-card, .timeline-item, .practice-card, .quote-card, .insight-box'
+  // 添加动画效果
+  const elements = document.querySelectorAll(
+    '.about-item, .wealth-card, .daily-card, .quote-item, .insight-box'
   );
   
-  elementsToAnimate.forEach(el => {
-    el.classList.add('animate-element');
+  elements.forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
     observer.observe(el);
   });
-  
-  // 添加动画样式
-  const style = document.createElement('style');
-  style.textContent = `
-    .animate-element {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .animate-element.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `;
-  document.head.appendChild(style);
 }
 
-// 技术栈进度条动画
-function initTechStackAnimation() {
-  const techItems = document.querySelectorAll('.tech-item');
+// 导航高亮
+function initNavHighlight() {
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item[href^="#"]');
   
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fill = entry.target.querySelector('.tech-fill');
-        const progress = entry.target.dataset.progress;
-        if (fill && progress) {
-          fill.style.width = `${progress}%`;
-        }
+  const updateNav = () => {
+    const scrollPos = window.scrollY + 200;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        navItems.forEach(item => {
+          item.style.background = 'rgba(255, 255, 255, 0.1)';
+          item.style.borderColor = 'rgba(74, 55, 40, 0.2)';
+          
+          if (item.getAttribute('href') === `#${sectionId}`) {
+            item.style.background = 'rgba(255, 255, 255, 0.2)';
+            item.style.borderColor = '#c53d43';
+          }
+        });
       }
     });
-  }, { threshold: 0.5 });
+  };
   
-  techItems.forEach(item => {
-    const fill = item.querySelector('.tech-fill');
-    if (fill) fill.style.width = '0';
-    observer.observe(item);
-  });
+  window.addEventListener('scroll', updateNav);
+  updateNav();
 }
-
-// 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
