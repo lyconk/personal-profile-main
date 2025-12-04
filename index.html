@@ -3,279 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人空间 - 未来视界</title>
+    <title>SEO × AI | 数字财富架构师</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            200: '#bfdbfe',
-                            300: '#93c5fd',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        },
-                        accent: {
-                            blue: '#3b82f6',
-                            cyan: '#06b6d4',
-                            purple: '#8b5cf6',
-                            gold: '#f59e0b',
-                        },
-                        dark: '#0a0e27'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
-                        display: ['Inter', 'Noto Sans SC', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="min-h-screen">
-    <!-- 背景动画元素 -->
-    <div id="particles-js" class="fixed inset-0 z-0 opacity-20"></div>
+<body>
+    <!-- 动态背景 -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
     
-    <div class="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <header class="mb-20 text-center relative">
-            <h1 class="text-4xl font-bold mb-2 font-display tracking-wider">
-                <span class="inline-block transform hover:scale-105 transition-transform duration-300">个人空间</span>
+    <!-- 侧边导航 -->
+    <nav class="side-nav">
+        <a href="#hero" class="nav-dot active" data-label="首页"></a>
+        <a href="#about" class="nav-dot" data-label="关于"></a>
+        <a href="#wealth" class="nav-dot" data-label="财富观"></a>
+        <a href="#daily" class="nav-dot" data-label="功课"></a>
+        <a href="#quotes" class="nav-dot" data-label="信念"></a>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">SEO × AI × 产品运营</div>
+            <h1 class="hero-title">
+                <span class="title-line">数字时代的</span>
+                <span class="title-line gradient-text">财富架构师</span>
             </h1>
-            <p class="text-xl mb-6">简单生活，持续进步</p>
+            <p class="hero-subtitle">10年+ SEO实战 · AI赋能增长 · 从工具到资本的进阶之路</p>
+            <div class="hero-cta">
+                <a href="#wealth" class="btn btn-primary">
+                    <span>探索财富观</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://webpilot.info/" target="_blank" class="btn btn-ghost">
+                    <i class="fas fa-globe"></i>
+                    <span>WebPilot</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-value">10+</span>
+                    <span class="stat-label">年从业经验</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value">∞</span>
+                    <span class="stat-label">AI增效潜力</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value">100×</span>
+                    <span class="stat-label">目标回报</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>向下滚动</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ABOUT</span>
+                <h2 class="section-title">关于我</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-search"></i></div>
+                    <h3>SEO专家</h3>
+                    <p>十余年搜索引擎优化经验，帮助众多网站提升排名与可见性</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>产品运营</h3>
+                    <p>数据驱动决策，分析用户需求，持续优化产品体验与市场竞争力</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI先行者</h3>
+                    <p>探索AI与人类协作的最佳模式，用技术杠杆放大商业价值</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 财富观 -->
+    <section id="wealth" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">WEALTH PHILOSOPHY</span>
+                <h2 class="section-title">AI时代财富杠杆</h2>
+                <p class="section-desc">从工具到合伙人的进阶之路</p>
+            </div>
             
-            <div class="relative mt-8 inline-block p-2 rounded-full glow-on-hover">
-                    <div class="flex items-center justify-center w-20 h-20 rounded-full p-0.5">
-                    <div class="rounded-full w-full h-full flex items-center justify-center">
-                        <i class="fas fa-user text-4xl"></i>
+            <div class="timeline">
+                <!-- 阶段1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="marker-num">01</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-badge">新手阶段</span>
+                            <h3>把自己当牛马，把AI当工具</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <div class="key-point">
+                                <i class="fas fa-bolt"></i>
+                                <span>勤奋执行 + AI效率工具 = 快速落地</span>
+                            </div>
+                            <ul class="timeline-list">
+                                <li>高强度执行：注册多账号、亲力亲为完成基础工作</li>
+                                <li>AI辅助提效：批量内容创作、账号管理突破人力限制</li>
+                                <li>先体力积累经验，再用AI放大规模</li>
+                            </ul>
+                            <div class="timeline-result">
+                                <i class="fas fa-chart-line"></i>
+                                月利润 10万+ 验证可行
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 阶段2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="marker-num">02</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-badge">进阶阶段</span>
+                            <h3>把自己当工具，把AI当牛马</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <div class="key-point">
+                                <i class="fas fa-bolt"></i>
+                                <span>人主导策略 + AI执行 = 规模化变现</span>
+                            </div>
+                            <ul class="timeline-list">
+                                <li>人做AI做不到的事：质量把控、协作网络、信任声誉</li>
+                                <li>AI规模化执行：重复劳动交给AI，专注商业模式</li>
+                                <li>找到蓝海市场，用人的智慧碾压低效竞争</li>
+                            </ul>
+                            <div class="timeline-result">
+                                <i class="fas fa-shield-alt"></i>
+                                形成行业壁垒
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 阶段3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="marker-num">03</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-badge">资本家阶段</span>
+                            <h3>组建牛马与AI的混合军团</h3>
+                        </div>
+                        <div class="timeline-body">
+                            <div class="key-point">
+                                <i class="fas fa-bolt"></i>
+                                <span>组织力 + AI/人力混合 = 系统性放大</span>
+                            </div>
+                            <ul class="timeline-list">
+                                <li>老板"闲"下来：脱离日常执行，专注洞察与优化SOP</li>
+                                <li>极致SOP+混合团队：人力与AI工具协同规模化执行</li>
+                                <li>从"找好工作"到"提供好工作"，为AI设计工作岗位</li>
+                            </ul>
+                            <div class="timeline-result">
+                                <i class="fas fa-crown"></i>
+                                年营收百万，毛利70%+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
 
-        <nav class="mb-12 sticky top-4 p-4 z-50">
-            <ul class="flex justify-center flex-wrap gap-2 sm:gap-4">
-                <li><a href="#intro" class="px-3 py-2 rounded-lg transition-all flex items-center hover-3d"><i class="fas fa-user-circle mr-1"></i> 个人介绍</a></li>
-                <li><a href="#wealth" class="px-3 py-2 rounded-lg transition-all flex items-center hover-3d"><i class="fas fa-coins mr-1"></i> 财富观</a></li>
-                <li><a href="#daily" class="px-3 py-2 rounded-lg transition-all flex items-center hover-3d"><i class="fas fa-tasks mr-1"></i> 每日功课</a></li>
-                <li><a href="#quotes" class="px-3 py-2 rounded-lg transition-all flex items-center hover-3d"><i class="fas fa-quote-right mr-1"></i> 励志语录</a></li>
-                <li><a href="https://webpilot.info/" target="_blank" class="px-3 py-2 rounded-lg transition-all flex items-center hover-3d"><i class="fas fa-globe mr-1"></i> WebPilot</a></li>
-            </ul>
-        </nav>
+            <!-- 核心洞察 -->
+            <div class="insight-box">
+                <div class="insight-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="insight-content">
+                    <h4>核心洞察</h4>
+                    <p>AI是杠杆，但人的<strong>判断力</strong>、<strong>协作能力</strong>和<strong>商业模式设计</strong>不可替代</p>
+                    <p class="insight-goal">终极目标：从"工具使用者"到"资源组织者"的跃迁 → <span class="highlight">百倍回报</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <main>
-            <section id="intro" class="mb-16 p-8 beam-effect">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 flex items-center font-display">
-                    <span class="w-10 h-10 flex items-center justify-center rounded-lg mr-3 shadow-lg">
-                        <i class="fas fa-user-circle"></i>
-                    </span>
-                    个人介绍
-                </h2>
-                <div class="space-y-4">
-                    <p class="leading-relaxed">我是一名从业十余年的SEO从业者。拥有丰富的SEO和产品运营经验。</p>
-                    <p class="leading-relaxed">多年来，我专注于搜索引擎优化技术，帮助众多网站提升在搜索引擎中的可见性和排名。同时我也热衷于分享SEO知识和经验，帮助更多人了解和掌握SEO技巧。</p>
-                    <p class="leading-relaxed">作为一名产品运营专家，我善于分析用户需求，设计和优化产品功能，并通过数据驱动决策，不断提升产品的用户体验和市场竞争力。</p>
-                </div>
-            </section>
-
-            <section id="wealth" class="mb-16 p-8 beam-effect">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 flex items-center font-display">
-                    <span class="w-10 h-10 flex items-center justify-center rounded-lg mr-3 shadow-lg">
-                        <i class="fas fa-coins"></i>
-                    </span>
-                    财富观
-                </h2>
-                <h3 class="text-xl font-medium mb-4 font-display">AI时代的财富杠杆：从工具到合伙人</h3>
-                <p class="mb-4 leading-relaxed">主要围绕如何利用AI技术在不同阶段实现商业价值最大化，从新手到资本家逐级进阶的策略展开，具体分为三个核心部分：</p>
-                
-                <div class="mb-6 p-6 border rounded-lg bg-gradient-to-r hover-float glow-on-hover">
-                    <h4 class="text-lg font-medium mb-3 flex items-center font-display">
-                        <i class="fas fa-horse-head mr-2"></i>Part 1：新手阶段——「把自己当牛马，把AI当工具」
-                    </h4>
-                    <p class="mb-3 leading-relaxed"><strong>核心逻辑</strong>：通过勤奋执行（牛马精神）+AI效率工具，快速落地生财有术的副业项目。</p>
-                    <p class="mb-3 leading-relaxed"><strong>具体方法</strong>：</p>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed"><strong>高强度执行</strong>：例如注册15个小红书账号并维护，亲力亲为完成基础工作。</li>
-                        <li class="leading-relaxed"><strong>AI辅助提效</strong>：用AI解决批量内容创作、账号管理等重复性任务（如生成文案、视频剪辑），突破人力时间限制。</li>
-                    </ul>
-                    <p class="mb-3 leading-relaxed"><strong>案例</strong>：</p>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed">新手通过航海项目（如TikTok、小红书）月利润达10万+</li>
-                        <li class="leading-relaxed">圈友@代一7天跑通AI手绘漫画风向标，赚取1000元，验证了"流量制造者"模式的可行性</li>
-                    </ul>
-                    <p class="leading-relaxed"><strong>关键点</strong>：先通过体力积累经验，再用AI放大规模。</p>
-                </div>
-                
-                <div class="mb-6 p-6 border rounded-lg bg-gradient-to-r hover-float glow-on-hover">
-                    <h4 class="text-lg font-medium mb-3 flex items-center font-display">
-                        <i class="fas fa-robot mr-2"></i>Part 2：进阶阶段——「把自己当工具，把AI当牛马」
-                    </h4>
-                    <p class="mb-3 leading-relaxed"><strong>核心逻辑</strong>：角色反转——人主导策略与资源整合，AI承担执行层"牛马"工作。</p>
-                    <p class="mb-3 leading-relaxed"><strong>方法论</strong>：</p>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed"><strong>人做AI做不到的事</strong>：如内容质量把控（如小鹅的AI写作生意需专业写手协同）、构建协作网络、建立信任声誉。</li>
-                        <li class="leading-relaxed"><strong>AI规模化执行</strong>：将重复劳动（如批量内容生成）交给AI，人专注于商业模式设计和放大。</li>
-                    </ul>
-                    <p class="mb-3 leading-relaxed"><strong>案例</strong>：</p>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed">小鹅的AI写作团队通过"专业写手+AI"混合模式，形成行业壁垒</li>
-                        <li class="leading-relaxed">强调"比AI更凶"——用人的判断力和组织能力创造差异化价值</li>
-                    </ul>
-                    <p class="leading-relaxed"><strong>关键点</strong>：找到蓝海市场（如需求强但供给弱的领域），用人的智慧碾压低效竞争。</p>
-                </div>
-                
-                <div class="mb-6 p-6 border rounded-lg bg-gradient-to-r hover-float glow-on-hover">
-                    <h4 class="text-lg font-medium mb-3 flex items-center font-display">
-                        <i class="fas fa-crown mr-2"></i>Part 3：资本家阶段——「组建牛马与AI的混合军团」
-                    </h4>
-                    <p class="mb-3 leading-relaxed"><strong>核心逻辑</strong>：企业家通过组织力整合"人力+AI"资源，专注顶层设计。</p>
-                    <p class="mb-3 leading-relaxed"><strong>方法论</strong>：</p>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed"><strong>老板"闲"下来</strong>：如王紫菜、沈小善等成功案例，通过脱离日常执行，专注洞察机会与优化SOP。</li>
-                        <li class="leading-relaxed"><strong>极致SOP+混合团队</strong>：从生财有术精华帖中孵化项目；招聘人力（如HR、兼职）与AI工具协同，规模化执行。</li>
-                    </ul>
-                    <p class="mb-3 leading-relaxed"><strong>案例</strong>：某随机精华帖衍生项目年营收数百万，毛利70%~80%。</p>
-                    <p class="leading-relaxed"><strong>社会价值升级</strong>：从"找好工作"到"提供好工作"，甚至为AI设计"工作岗位"。</p>
-                </div>
-                
-                <div class="bg-gradient-to-r p-6 rounded-lg border-l-4 hover-float">
-                    <h4 class="text-lg font-medium mb-3 font-display">AI时代的生财进阶路径</h4>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed"><strong>新手</strong>：体力+AI工具 → 快速验证项目</li>
-                        <li class="leading-relaxed"><strong>聪明人</strong>：策略+AI执行 → 规模化变现</li>
-                        <li class="leading-relaxed"><strong>资本家</strong>：组织力+AI/人力混合 → 系统性放大机会</li>
-                    </ul>
-                    <p class="mb-3 leading-relaxed"><strong>核心洞察</strong>：</p>
-                    <ul class="list-disc list-inside mb-3 ml-4 space-y-2">
-                        <li class="leading-relaxed">AI是杠杆，但人的判断力、协作能力和商业模式设计不可替代</li>
-                        <li class="leading-relaxed">生财有术的价值在于提供可复制的项目模板（航海、风向标）与组织方法论</li>
-                    </ul>
-                    <p class="leading-relaxed"><strong>终极目标</strong>：通过AI与人的协同，实现从"工具使用者"到"资源组织者"的跃迁，最终达成百倍回报。</p>
-                </div>
-            </section>
-
-            <section id="daily" class="mb-16 p-8 beam-effect">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 flex items-center font-display">
-                    <span class="w-10 h-10 flex items-center justify-center rounded-lg mr-3 shadow-lg">
-                        <i class="fas fa-tasks"></i>
-                    </span>
-                    每日功课
-                </h2>
-                <p class="mb-6 leading-relaxed">SEO每日功课分为两大部分，分别是SEO练习和代码学习。</p>
-                
-                <div class="mb-8 p-6 border rounded-lg bg-gradient-to-r hover-float">
-                    <h3 class="text-xl font-medium mb-4 flex items-center font-display">
-                        <i class="fas fa-search mr-2"></i>SEO练习
-                    </h3>
-                    <p class="mb-4 leading-relaxed">每天要多找词，看词，看网站；</p>
-                    <p class="mb-4 leading-relaxed">用到的工具为AITDK，ahrefs工具箱</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <a href="https://ahrefs.com/keyword-difficulty" target="_blank" class="flex items-center p-4 rounded-lg transition-colors group hover-3d">
-                            <i class="fas fa-chart-bar mr-3 text-2xl group-hover:scale-110 transition-transform"></i>
-                            <div>
-                                <div class="font-medium group-hover:scale-105 transition-transform">关键词难度分析</div>
-                                <div class="text-sm opacity-80">查看关键词难度和搜索结果前几名</div>
+    <!-- 每日功课 -->
+    <section id="daily" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DAILY PRACTICE</span>
+                <h2 class="section-title">每日功课</h2>
+            </div>
+            
+            <div class="practice-grid">
+                <!-- SEO练习 -->
+                <div class="practice-card">
+                    <div class="practice-header">
+                        <div class="practice-icon"><i class="fas fa-search-dollar"></i></div>
+                        <h3>SEO练习</h3>
+                    </div>
+                    <div class="practice-body">
+                        <p class="practice-intro">每天多找词、看词、看网站</p>
+                        <div class="tool-grid">
+                            <a href="https://ahrefs.com/keyword-difficulty" target="_blank" class="tool-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>关键词难度</span>
+                            </a>
+                            <a href="https://ahrefs.com/backlink-checker" target="_blank" class="tool-item">
+                                <i class="fas fa-link"></i>
+                                <span>外链分析</span>
+                            </a>
+                            <a href="https://ahrefs.com/keyword-generator" target="_blank" class="tool-item">
+                                <i class="fas fa-key"></i>
+                                <span>关键词生成</span>
+                            </a>
+                            <a href="https://ahrefs.com/traffic-checker" target="_blank" class="tool-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>流量检查</span>
+                            </a>
+                        </div>
+                        <div class="practice-target">
+                            <div class="target-item">
+                                <span class="target-num">100+</span>
+                                <span class="target-label">关键词/日</span>
                             </div>
-                        </a>
-                        
-                        <a href="https://ahrefs.com/backlink-checker" target="_blank" class="flex items-center p-4 rounded-lg transition-colors group hover-3d">
-                            <i class="fas fa-link mr-3 text-2xl group-hover:scale-110 transition-transform"></i>
-                            <div>
-                                <div class="font-medium group-hover:scale-105 transition-transform">外链分析工具</div>
-                                <div class="text-sm opacity-80">查看一个网站的外链来源</div>
+                            <div class="target-item">
+                                <span class="target-num">1000+</span>
+                                <span class="target-label">网站研究</span>
                             </div>
-                        </a>
-                        
-                        <a href="https://ahrefs.com/keyword-generator" target="_blank" class="flex items-center p-4 rounded-lg transition-colors group hover-3d">
-                            <i class="fas fa-key mr-3 text-2xl group-hover:scale-110 transition-transform"></i>
-                            <div>
-                                <div class="font-medium group-hover:scale-105 transition-transform">关键词生成器</div>
-                                <div class="text-sm opacity-80">查看相关关键词推荐</div>
+                            <div class="target-item">
+                                <span class="target-num">TOP500</span>
+                                <span class="target-label">Toolify熟记</span>
                             </div>
-                        </a>
-                        
-                        <a href="https://ahrefs.com/traffic-checker" target="_blank" class="flex items-center p-4 rounded-lg transition-colors group hover-3d">
-                            <i class="fas fa-chart-line mr-3 text-2xl group-hover:scale-110 transition-transform"></i>
-                            <div>
-                                <div class="font-medium group-hover:scale-105 transition-transform">流量分析工具</div>
-                                <div class="text-sm opacity-80">查询网站流量和主要关键词</div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="p-4 rounded-lg border-l-2 pulse-border">
-                        <p class="mb-3 leading-relaxed">持续去看，看100个以上关键词，看1000个以上网站和网页。</p>
-                        <p class="leading-relaxed">看各类网站排行榜，尤其是toolify，前500个网站要如数家珍。</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="p-6 border rounded-lg bg-gradient-to-r hover-float">
-                    <h3 class="text-xl font-medium mb-4 flex items-center font-display">
-                        <i class="fas fa-code mr-2"></i>代码学习
-                    </h3>
-                    <p class="mb-4 leading-relaxed">代码学习部分就是按照路线图学习，包括以下技术栈：</p>
-                    
-                    <div class="flex flex-wrap gap-3 mb-4">
-                        <span class="px-3 py-1 rounded-full flex items-center hover-float">
-                            <i class="fab fa-html5 mr-1"></i> HTML
-                        </span>
-                        <span class="px-3 py-1 rounded-full flex items-center hover-float">
-                            <i class="fab fa-css3-alt mr-1"></i> CSS
-                        </span>
-                        <span class="px-3 py-1 rounded-full flex items-center hover-float">
-                            <i class="fab fa-js mr-1"></i> JavaScript
-                        </span>
-                        <span class="px-3 py-1 rounded-full flex items-center hover-float">
-                            <i class="fab fa-react mr-1"></i> React
-                        </span>
-                        <span class="px-3 py-1 rounded-full flex items-center hover-float">
-                            <i class="fab fa-node mr-1"></i> Next.JS
-                        </span>
-                    </div>
-                </div>
-            </section>
 
-            <section id="quotes" class="mb-16 p-8 beam-effect">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 flex items-center font-display">
-                    <span class="w-10 h-10 flex items-center justify-center rounded-lg mr-3 shadow-lg">
-                        <i class="fas fa-quote-right"></i>
-                    </span>
-                    励志语录
-                </h2>
-                <div class="flex flex-col space-y-6">
-                    <div class="bg-gradient-to-r p-6 rounded-lg text-center relative overflow-hidden hover-float glow-on-hover">
-                        <span class="absolute text-8xl top-0 left-4 font-display">"</span>
-                        <p class="text-xl italic relative z-10 font-display tracking-wider">不积跬步，无以至千里</p>
-                        <span class="absolute text-8xl bottom-0 right-4 font-display">"</span>
+                <!-- 代码学习 -->
+                <div class="practice-card">
+                    <div class="practice-header">
+                        <div class="practice-icon"><i class="fas fa-code"></i></div>
+                        <h3>代码学习</h3>
                     </div>
-                    <div class="bg-gradient-to-r p-6 rounded-lg text-center relative overflow-hidden hover-float glow-on-hover">
-                        <span class="absolute text-8xl top-0 left-4 font-display">"</span>
-                        <p class="text-xl italic relative z-10 font-display tracking-wider">勤则百弊皆除</p>
-                        <span class="absolute text-8xl bottom-0 right-4 font-display">"</span>
-                    </div>
-                    <div class="bg-gradient-to-r p-6 rounded-lg text-center relative overflow-hidden hover-float glow-on-hover">
-                        <span class="absolute text-8xl top-0 left-4 font-display">"</span>
-                        <p class="text-xl italic relative z-10 font-display tracking-wider">日精进</p>
-                        <span class="absolute text-8xl bottom-0 right-4 font-display">"</span>
+                    <div class="practice-body">
+                        <p class="practice-intro">按路线图系统学习</p>
+                        <div class="tech-stack">
+                            <div class="tech-item" data-progress="100">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML</span>
+                                <div class="tech-bar"><div class="tech-fill"></div></div>
+                            </div>
+                            <div class="tech-item" data-progress="90">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS</span>
+                                <div class="tech-bar"><div class="tech-fill"></div></div>
+                            </div>
+                            <div class="tech-item" data-progress="70">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                                <div class="tech-bar"><div class="tech-fill"></div></div>
+                            </div>
+                            <div class="tech-item" data-progress="50">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                                <div class="tech-bar"><div class="tech-fill"></div></div>
+                            </div>
+                            <div class="tech-item" data-progress="30">
+                                <i class="fas fa-n"></i>
+                                <span>Next.JS</span>
+                                <div class="tech-bar"><div class="tech-fill"></div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
+    </section>
 
-        <footer class="text-center mt-16 pt-8 border-t">
-            <p class="text-sm">© 2025 个人空间 | 简单生活，持续进步</p>
-        </footer>
-    </div>
+    <!-- 信念 -->
+    <section id="quotes" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">BELIEF</span>
+                <h2 class="section-title">日精进</h2>
+            </div>
+            
+            <div class="quotes-container">
+                <div class="quote-card quote-main">
+                    <div class="quote-symbol">"</div>
+                    <p class="quote-text">不积跬步，无以至千里</p>
+                    <div class="quote-line"></div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-symbol">"</div>
+                    <p class="quote-text">勤则百弊皆除</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>简单生活，持续进步</p>
+                <p class="copyright">© 2025 个人空间</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>

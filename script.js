@@ -1,120 +1,134 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initAuroraBackground();
-  initAnimateOnScroll();
-  initNavigationState();
-  initSmoothScroll();
-  createBackToTop();
+  initSideNavigation();
+  initScrollAnimations();
+  initTechStackAnimation();
 });
 
-function initAuroraBackground() {
-  const container = document.getElementById('particles-js');
-  if (!container) return;
-  container.innerHTML = '';
-
-  const orbCount = 7;
-  const palette = [
-    'rgba(103, 232, 249, 0.5)',
-    'rgba(129, 140, 248, 0.5)',
-    'rgba(192, 132, 252, 0.55)',
-    'rgba(248, 113, 113, 0.45)'
-  ];
-
-  for (let i = 0; i < orbCount; i++) {
-    const orb = document.createElement('span');
-    orb.className = 'aurora-orb';
-    orb.style.left = `${Math.random() * 100}%`;
-    orb.style.top = `${Math.random() * 100}%`;
-    orb.style.animationDelay = `${Math.random() * 10}s`;
-    orb.style.background = `radial-gradient(circle, ${palette[i % palette.length]}, transparent 65%)`;
-    container.appendChild(orb);
-  }
-}
-
-function initAnimateOnScroll() {
-  const sections = document.querySelectorAll('section');
-  sections.forEach(section => section.classList.add('animate-on-scroll'));
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible', 'beam-effect');
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  sections.forEach(section => observer.observe(section));
-}
-
-function initNavigationState() {
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  const sections = Array.from(navLinks)
-    .map(link => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-
-  const activateLink = id => {
-    navLinks.forEach(link => {
-      const target = link.getAttribute('href')?.replace('#', '');
-      if (!target) return;
-      link.classList.toggle('active-link', target === id);
-    });
-  };
-
-  const onScroll = () => {
-    const scrollPos = window.scrollY + 150;
-    let currentId = sections[0]?.id ?? '';
-
-    sections.forEach(section => {
-      if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-        currentId = section.id;
+// 侧边导航激活状态
+function initSideNavigation() {
+  const navDots = document.querySelectorAll('.nav-dot');
+  const sections = document.querySelectorAll('section[id]');
+  
+  // 点击导航
+  navDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = dot.getAttribute('href');
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
-
-    activateLink(currentId);
-  };
-
-  window.addEventListener('scroll', onScroll);
-  onScroll();
-}
-
-function initSmoothScroll() {
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  navLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      const targetId = link.getAttribute('href');
-      const target = document.querySelector(targetId);
-      if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  
+  // 滚动时更新激活状态
+  const updateActiveNav = () => {
+    const scrollPos = window.scrollY + window.innerHeight / 2;
+    
+    sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        navDots.forEach(dot => dot.classList.remove('active'));
+        const activeHref = `#${section.id}`;
+        const activeDot = document.querySelector(`.nav-dot[href="${activeHref}"]`);
+        if (activeDot) activeDot.classList.add('active');
+      }
     });
-  });
-}
-
-function createBackToTop() {
-  const button = document.createElement('button');
-  button.innerHTML = '<i class="fas fa-arrow-up"></i>';
-  button.className = 'back-to-top';
-  button.style.cssText = `
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    width: 54px;
-    height: 54px;
-    opacity: 0;
-    z-index: 40;
-  `;
-  document.body.appendChild(button);
-
-  button.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  const toggleVisibility = () => {
-    button.style.opacity = window.scrollY > 360 ? '1' : '0';
+    
+    // Hero section 特殊处理
+    if (window.scrollY < sections[0]?.offsetTop) {
+      navDots.forEach(dot => dot.classList.remove('active'));
+      const heroDot = document.querySelector('.nav-dot[href="#hero"]');
+      if (heroDot) heroDot.classList.add('active');
+    }
   };
-
-  window.addEventListener('scroll', toggleVisibility);
-  toggleVisibility();
+  
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
 }
+
+// 滚动动画
+function initScrollAnimations() {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        
+        // 时间线项目的延迟动画
+        if (entry.target.classList.contains('timeline-item')) {
+          const items = document.querySelectorAll('.timeline-item');
+          items.forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.2}s`;
+          });
+        }
+      }
+    });
+  }, observerOptions);
+  
+  // 观察元素
+  const elementsToAnimate = document.querySelectorAll(
+    '.about-card, .timeline-item, .practice-card, .quote-card, .insight-box'
+  );
+  
+  elementsToAnimate.forEach(el => {
+    el.classList.add('animate-element');
+    observer.observe(el);
+  });
+  
+  // 添加动画样式
+  const style = document.createElement('style');
+  style.textContent = `
+    .animate-element {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-element.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// 技术栈进度条动画
+function initTechStackAnimation() {
+  const techItems = document.querySelectorAll('.tech-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target.querySelector('.tech-fill');
+        const progress = entry.target.dataset.progress;
+        if (fill && progress) {
+          fill.style.width = `${progress}%`;
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  techItems.forEach(item => {
+    const fill = item.querySelector('.tech-fill');
+    if (fill) fill.style.width = '0';
+    observer.observe(item);
+  });
+}
+
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
