@@ -524,6 +524,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  margin-bottom: 48px;
 }
 
 .daily-card {
@@ -670,6 +671,166 @@ body {
   background: linear-gradient(90deg, var(--accent-beni), var(--accent-fuji));
   border-radius: 3px;
   transition: width 1s ease;
+}
+
+/* Special styling for Next.js */
+.tech-item[data-tech="nextjs"] .tech-name {
+  color: #000000;
+  font-weight: 600;
+}
+
+.tech-item[data-tech="nextjs"] .tech-name::before {
+  content: '★ ';
+  color: #000000;
+}
+
+.tech-item[data-tech="nextjs"] .tech-fill {
+  background: #000000;
+}
+
+/* SEO重点关注区域 */
+.seo-focus {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-primary);
+}
+
+.seo-focus h4 {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--accent-beni);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+/* Next.js 专项学习区域 */
+.next-focus {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-primary);
+}
+
+.next-focus h4 {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--accent-beni);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.focus-list {
+  list-style: none;
+}
+
+.focus-list li {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.focus-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-asagi);
+  border-radius: 50%;
+}
+
+/* AI使用技巧部分 */
+.ai-tips-section {
+  margin-top: 48px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tips-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line-primary);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.tips-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-asagi);
+  transform: translateY(-2px);
+}
+
+.tips-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(72, 146, 155, 0.1);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--accent-asagi);
+  font-size: 1.3rem;
+}
+
+.tips-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.tips-list {
+  list-style: none;
+}
+
+.tips-list li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(74, 55, 40, 0.1);
+}
+
+.tips-list li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.tips-list strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--accent-beni);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.tips-list p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.prompt-example {
+  display: block;
+  background: rgba(74, 55, 40, 0.05);
+  border: 1px solid var(--line-primary);
+  border-left: 3px solid var(--accent-beni);
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  border-radius: var(--radius-sm);
+  word-break: break-all;
+  margin-top: 8px;
 }
 
 /* ========== Quotes ========== */
@@ -1207,5 +1368,10 @@ body {
   
   .quote-small p {
     font-size: 0.85rem;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
