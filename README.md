@@ -131,6 +131,20 @@ personal-profile-main/
 2. **样式调整**：在`styles.css`中修改CSS变量或具体样式
 3. **新增区块**：参考现有section结构添加
 
+### 特殊区块说明
+
+**Next.js学习路径区块**：
+- 位置：知识体系部分（#knowledge）
+- 结构：
+  - 学习路线表格（.learning-path-table）
+  - 前置知识卡片（.knowledge-grid）
+  - 关键学习要点（.learning-highlights）
+- 特点：
+  - 响应式表格设计
+  - 阶段编号和进度标识
+  - 实践项目推荐
+  - 移动端友好的卡片布局
+
 ### 优化建议
 
 1. **图片优化**：
